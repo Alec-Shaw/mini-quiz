@@ -25,27 +25,49 @@ const Quiz = () => {
   return (
     <div className="Quiz">
       <h1>{Questions[currQuestion].prompt}</h1>
+      <form>
+        <div>
+          <input
+            type="radio"
+            id="Choice1"
+            name="contact"
+            onChange={() => setOtionChosen("D")}
+          />
+          <label> {Questions[currQuestion].optionD}</label>
+
+          <input
+            type="radio"
+            id="Choice2"
+            name="contact"
+            onChange={() => setOtionChosen("B")}
+          />
+          <label>{Questions[currQuestion].optionB}</label>
+
+          <input
+            type="radio"
+            id="Choice3"
+            name="contact"
+            onChange={() => setOtionChosen("A")}
+          />
+          <label>{Questions[currQuestion].optionA}</label>
+          <input
+            type="radio"
+            id="Choice4"
+            name="contact"
+            onChange={() => setOtionChosen("C")}
+          />
+          <label>{Questions[currQuestion].optionC}</label>
+        </div>
+      </form>
       <div>
-        <button onClick={() => setOtionChosen("A")}>
-          {Questions[currQuestion].optionA}
-        </button>
-        <button onClick={() => setOtionChosen("B")}>
-          {Questions[currQuestion].optionB}
-        </button>
-        <button onClick={() => setOtionChosen("C")}>
-          {Questions[currQuestion].optionC}
-        </button>
-        <button onClick={() => setOtionChosen("D")}>
-          {Questions[currQuestion].optionD}
-        </button>
+        {currQuestion == Questions.length - 1 ? (
+          <button onClick={finishQuiz}>Finish Quiz</button>
+        ) : (
+          <button className="next" onClick={nextQuestion}>
+            Next Question
+          </button>
+        )}
       </div>
-      {currQuestion == Questions.length - 1 ? (
-        <button onClick={finishQuiz}>Finish Quiz</button>
-      ) : (
-        <button className="next" onClick={nextQuestion}>
-          Next Question
-        </button>
-      )}
     </div>
   );
 };
